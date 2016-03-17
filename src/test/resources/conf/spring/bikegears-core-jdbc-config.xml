@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy/>
+
+    <bean id="dataSourceMySQLTest"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://bikegearstest1.cqqutugyc1vt.us-east-1.rds.amazonaws.com:3306/test" />
+        <property name="username" value="jorisadmin" />
+        <property name="password" value="jori1304" />
+    </bean>
+
+    <bean id="bgDAO" class="com.nob.bg.dao.jdbc.BikeGearsJdbcDAO">
+        <property name="dataSource" ref="dataSourceMySQLTest"/>
+    </bean>
+
+    <bean id="bgReportDAO" class="com.nob.bg.dao.jdbc.BikeGearsReportJdbcDAO">
+        <property name="dataSource" ref="dataSourceMySQLTest"/>
+    </bean>
+    
+    <bean id="service" class="com.nob.bg.service.BikeGearsServiceImpl">
+        <property name="bgDAO" ref="bgDAO"/>
+        <property name="bgReportDAO" ref="bgReportDAO"/>
+    </bean>
+
+    <bean id="loggingBeforeAdvisor" class="com.nob.bg.aop.advice.LoggingAdvice" />
+    
+    <bean id="profileAdvisor" class="com.nob.bg.aop.advice.ProfileAdvice"/>
+    
+    <bean id="blConcernsPointcut" class="com.nob.bg.aop.pointcut.BLConcerns"/>
+
+    <bean id="throwsDataAccessExInterceptor"
+        class="com.nob.bg.interceptors.ThrowsDataAccessExceptionAdvice">
+    </bean>
+</beans>
