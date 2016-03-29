@@ -129,8 +129,6 @@ public class BikeGearsJdbcDAO extends JdbcDaoSupport implements BikeGearsDAO {
 
     @SuppressWarnings("unchecked")
     public List<BikeRide> getBikeRides(Integer rowLimit) {
-        // when setting fetch size we cannot use JdbcTemplate
-        // unfortunately.
         JdbcTemplate jt = new JdbcTemplate(this.getDataSource());
         if (rowLimit != null) {
             jt.setFetchSize(rowLimit);

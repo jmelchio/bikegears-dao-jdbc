@@ -16,7 +16,7 @@ CREATE TABLE  `test`.`bike` (
   `type_id` int(11) default NULL,
   `bike_rider_id` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `test`.`bike_ride`
@@ -39,7 +39,7 @@ CREATE TABLE  `test`.`bike_ride` (
   `bike_id` int(11) default NULL,
   PRIMARY KEY  (`id`),
   KEY `i_date` (`date`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `test`.`bike_ride`
@@ -56,7 +56,7 @@ CREATE TABLE  `test`.`bike_ride_type` (
   `description` text,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `test`.`bike_rider`
@@ -69,7 +69,7 @@ CREATE TABLE  `test`.`bike_rider` (
   `password` varchar(40) default NULL,
   `person_id` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `test`.`bike_type`
@@ -82,7 +82,7 @@ CREATE TABLE  `test`.`bike_type` (
   `description` text,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `test`.`person`
@@ -96,5 +96,5 @@ CREATE TABLE  `test`.`person` (
   `initials` varchar(6) default NULL,
   `birthdate` date default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
